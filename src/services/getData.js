@@ -4,7 +4,7 @@ const baseURL = `https://api.spoonacular.com/recipes/complexSearch`;
 
 const getDietList = async (diet) => {
   const res = await fetch(
-    `${baseURL}/?apiKey=${apiKey}&diet=${diet}&addRecipeInformation=true&type`
+    `${baseURL}/?apiKey=${apiKey}&diet=${diet}&addRecipeInformation=true&typ&number=3`
   );
   const data = res.json();
   return data;

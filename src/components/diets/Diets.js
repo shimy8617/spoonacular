@@ -24,14 +24,14 @@ export const Diets = () => {
       const { results } = await getDietList(diet);
 
       results.forEach(() => {
-        setImageUrl(results[0].image);
+        setImageUrl(results.image);
       });
-      setTitle(results[0].title);
-      setPrice(results[0].pricePerServing);
-      setReady(results[0].readyInMinutes);
-      setServings(results[0].servings);
-      setTypes(results[0].dishTypes);
-      setDiets(results[0].diets);
+      setTitle(results.title);
+      setPrice(results.pricePerServing);
+      setReady(results.readyInMinutes);
+      setServings(results.servings);
+      setTypes(results.dishTypes);
+      setDiets(results.diets);
 
       setIsLoading(false);
     };
@@ -46,6 +46,12 @@ export const Diets = () => {
       </div>
     );
   }
+  function ListItem(props) {
+    return <li className="list-group">{props.value}</li>;
+  }
+  const listItems = types.map((item, index) => (
+    <ListItem key={index} value={item} />
+  ));
 
   return (
     <div className="App">
@@ -57,42 +63,23 @@ export const Diets = () => {
         <p>{servings}</p>
         <div className="typesList">
           Dish Type:
-          {types.map((item, index) => (
-            <ul className="list-group">
-              <li class="list-group-item" key={index}>
-                {item}
-              </li>
-            </ul>
+          {types.map((item) => (
+            <ul className="list-group">{listItems}</ul>
           ))}
         </div>
         <div className="dietsList">
           Diets:
-          {diets.map((item, index) => (
-            <ul className="list-group">
-              <li className="list-group-item" key={index}>
-                {item}
-              </li>
-            </ul>
-          ))}
+          {diets.map((item, index) => {
+            return (
+              <ul className="list-group">
+                <li className="list-group-item" key={index}>
+                  {item}
+                </li>
+              </ul>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 };
-
-/* const container = document.getElementById("diets");
-
-const listOfDiets = async (diet = "vegan") => {
-  const { results } = await getDietList(diet);
-
-  results.forEach((item) => {
-    const article = document.createElement("article");
-    article.innerHTML = `
-            <img src=${item.image} alt="" />
-            <h2>${item.title}</h2>
-        `;
-    container.appendChild(article);
-  });
-};
-
-listOfDiets(); */

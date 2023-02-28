@@ -14,7 +14,7 @@ export const Home = () => {
         </button>
       </div>
       <div className="chooseOption text-center p-3">
-        <label for="diets">Or Choose One Option:</label>
+        <label htmlFor="diets">Or Choose One Option:</label>
         <select name="diets" id="diets">
           <option value="Vegetarian">Vegetarian</option>
           <option value="Vegan">Vegan</option>
@@ -24,9 +24,7 @@ export const Home = () => {
           <option value="Whole30">Whole30</option>
         </select>
       </div>
-      <div className="dietSection">
-        <Diets />
-      </div>
+      <Diets />
     </div>
   );
 };
