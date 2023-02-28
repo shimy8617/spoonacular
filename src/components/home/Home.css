@@ -1,0 +1,8 @@
+.bodyHome {
+    height: calc(100vh - 112px);
+}
+
+.dietSection {
+    height: inherit;
+    max-height: 100%;
+}
