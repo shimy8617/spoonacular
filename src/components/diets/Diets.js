@@ -15,23 +15,22 @@ export const Diets = () => {
   const [types, setTypes] = useState(null);
   const [diets, setDiets] = useState(null);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     getDietList();
-  }, []);
+  }, []); */
 
   useEffect(() => {
     const listOfDiets = async (diet = "vegan") => {
       const { results } = await getDietList(diet);
-
-      results.forEach(() => {
-        setImageUrl(results.image);
+      results.forEach((item) => {
+        setImageUrl(item.image);
+        setTitle(item.title);
+        setPrice(item.pricePerServing);
+        setReady(item.readyInMinutes);
+        setServings(item.servings);
+        setTypes(item.dishTypes);
+        setDiets(item.diets);
       });
-      setTitle(results.title);
-      setPrice(results.pricePerServing);
-      setReady(results.readyInMinutes);
-      setServings(results.servings);
-      setTypes(results.dishTypes);
-      setDiets(results.diets);
 
       setIsLoading(false);
     };
@@ -43,29 +42,28 @@ export const Diets = () => {
     return (
       <div className="App">
         <h1>Cargando...</h1>
+        <Spinner />
       </div>
     );
   }
-  function ListItem(props) {
-    return <li className="list-group">{props.value}</li>;
-  }
-  const listItems = types.map((item, index) => (
-    <ListItem key={index} value={item} />
+
+  const listTypes = types.map((item, index) => (
+    <li key={index} className="list-group">
+      {item}
+    </li>
   ));
 
   return (
     <div className="App">
-      <div className="container-fluid">
+      <div className="containerDiets">
         <img src={imageUrl} alt=""></img>
         <h2>{title}</h2>
         <p>${price} per serving</p>
         <p>Ready in {ready} minutes</p>
-        <p>{servings}</p>
-        <div className="typesList">
+        <p>Servings: {servings}</p>
+        <div className="typesList p-3">
           Dish Type:
-          {types.map((item) => (
-            <ul className="list-group">{listItems}</ul>
-          ))}
+          <ul className="list-group mt-2">{listTypes}</ul>
         </div>
         <div className="dietsList">
           Diets:
