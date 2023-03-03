@@ -2,10 +2,8 @@ import "./Footer.css";
 
 export const Footer = () => {
   return (
-    <div className="navbar bg-dark fixed-bottom" data-bs-theme="dark">
-      <div className="container-fluid">
-        <p className="text-light text-end">Made By Shimy</p>
-      </div>
+    <div className="footer bg-dark" data-bs-theme="dark">
+      <p className="text-light text-end pe-3 mb-0">Made By Shimy</p>
     </div>
   );
 };
