@@ -1,4 +1,4 @@
-const apiKey = "ef04f9ae17f34d709f92d66448e331ea";
+const apiKey = "40302453062c462299983b93e3e85f00";
 
 const baseURL = `https://api.spoonacular.com/recipes/complexSearch`;
 
