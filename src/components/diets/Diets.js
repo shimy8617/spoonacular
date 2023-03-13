@@ -16,9 +16,9 @@ export const Diets = () => {
   useEffect(() => {
     const listOfDiets = async (diet = "vegan") => {
       const { results } = await getDietList(diet);
-      results.forEach((item) => {
-        setRecipe((oldArray) => [...oldArray, item]);
-      });
+
+        setRecipe(results);
+        console.log(recipe);
 
       setIsLoading(false);
     };
@@ -38,12 +38,12 @@ export const Diets = () => {
   return (
     <div className="App">
       <div className="containerDiets">
-        {recipe.map((item, index) => {
+        {recipe.map(({id,image,title}) => {
           return (
             <div>
-              <img key={index} src={item.image} alt="" />
-              <h2>{item.title}</h2>
-              <p>${item.price} per serving</p>
+              <img key={id} src={image} alt="" />
+               <h2>{title}</h2>
+              {/*<p>${item.price} per serving</p>
               <p>Ready in {item.ready} minutes</p>
               <p>Servings: {item.servings}</p>
               <div className="typesList p-3">
@@ -64,8 +64,8 @@ export const Diets = () => {
                       </li>
                     </ul>
                   );
-                })}
-              </div>
+                })} 
+              </div>*/}
             </div>
           );
         })}
