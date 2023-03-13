@@ -38,15 +38,15 @@ export const Diets = () => {
   return (
     <div className="App">
       <div className="containerDiets">
-        {recipe.map(({id,image,title}) => {
+        {recipe.map(({id,image,title,pricePerServing,readyInMinutes,servings}) => {
           return (
             <div>
               <img key={id} src={image} alt="" />
                <h2>{title}</h2>
-              {/*<p>${item.price} per serving</p>
-              <p>Ready in {item.ready} minutes</p>
-              <p>Servings: {item.servings}</p>
-              <div className="typesList p-3">
+              <p>${pricePerServing} per serving</p>
+              <p>Ready in {readyInMinutes} minutes</p>
+              <p>Servings: {servings}</p>
+              {/* <div className="typesList p-3">
                 Dish Type:
                 {item.dishTypes.map((type, index) => (
                   <ul className="list-group mt-2">
@@ -65,8 +65,8 @@ export const Diets = () => {
                     </ul>
                   );
                 })} 
-              </div>*/}
-            </div>
+              </div> */}
+              </div>
           );
         })}
       </div>
