@@ -17,8 +17,8 @@ export const Diets = () => {
     const listOfDiets = async (diet = "vegan") => {
       const { results } = await getDietList(diet);
 
-        setRecipe(results);
-        console.log(recipe);
+      setRecipe(results);
+      console.log(recipe);
 
       setIsLoading(false);
     };
@@ -38,37 +38,39 @@ export const Diets = () => {
   return (
     <div className="App">
       <div className="containerDiets">
-        {recipe.map(({id,image,title,pricePerServing,readyInMinutes,servings}) => {
-          return (
-            <div>
-              <img key={id} src={image} alt="" />
-               <h2>{title}</h2>
-              <p>${pricePerServing} per serving</p>
-              <p>Ready in {readyInMinutes} minutes</p>
-              <p>Servings: {servings}</p>
-              {/* <div className="typesList p-3">
-                Dish Type:
+        {recipe.map(
+          ({ id, image, title, pricePerServing, readyInMinutes, servings }) => {
+            return (
+              <div>
+                <img key={id} src={image} alt="" />
+                <h2>{title}</h2>
+                <p>${pricePerServing} per serving</p>
+                <p>Ready in {readyInMinutes} minutes</p>
+                <p>Servings: {servings}</p>
+                {/* <div className="typesList p-3">
+                    Dish Type:
                 {item.dishTypes.map((type, index) => (
-                  <ul className="list-group mt-2">
+                      <ul className="list-group mt-2">
                     <li key={index}>{type}</li>
-                  </ul>
-                ))}
-              </div>
-              <div className="dietsList">
-                Diets:
+                      </ul>
+                    ))}
+                  </div>
+                  <div className="dietsList">
+                    Diets:
                 {item.diets.map((item, index) => {
-                  return (
-                    <ul className="list-group">
+                      return (
+                        <ul className="list-group">
                       <li className="list-group-item" key={index}>
-                        {item}
-                      </li>
-                    </ul>
-                  );
-                })} 
+                            {item}
+                          </li>
+                        </ul>
+                      );
+                    })}
               </div> */}
               </div>
-          );
-        })}
+            );
+          }
+        )}
       </div>
     </div>
   );
